@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mood Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="nav-btn" onclick="previousMonth()">◄</button>
+            <h1 id="monthYear">Mood Tracker</h1>
+            <div>
+                <button class="nav-btn" onclick="nextMonth()">►</button>
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="mood-btn happy" onclick="setMood('happy')">😊 Happy</button>
+            <button class="mood-btn okay" onclick="setMood('okay')">😐 Okay</button>
+            <button class="mood-btn sad" onclick="setMood('sad')">😢 Sad</button>
+            <button class="mood-btn bad" onclick="setMood('bad')">😣 Bad</button>
+        </div>
+        <div class="calendar" id="calendar"></div>
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color" style="background-color: #ffae00;"></span> Happy</div>
+            <div class="legend-item"><span class="legend-color" style="background-color: #66bb6a;"></span> Okay</div>
+            <div class="legend-item"><span class="legend-color" style="background-color: #42a5f5;"></span> Sad</div>
+            <div class="legend-item"><span class="legend-color" style="background-color: #ef5350;"></span> Bad</div>
+        </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
