@@ -6,38 +6,44 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body class="bg-[#202328] text-white">
+  <body id="move-box" class="bg-[#202328] text-white">
+    <div
+      id="cursor"
+      class="h-5 w-5 bg-orange-500 rounded-full  animate-pulse shadow-lg shadow-amber-300 fixed border-0"
+    ></div>
     <header>
       <nav>
-        <ol class="flex w-fit gap-5 m-3 ml-5 p-3 px-10 text-xl rounded-xl">
+        <ol
+          class="flex w-fit gap-5 m-3 ml-5 p-3 px-10 text-xl rounded-xl font-Tektur"
+        >
           <button
-            class="cursor-pointer rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-300 focus:shadow-amber-200 bg-transparent px-5 py-2"
+            class="cursor-pointer rounded-2xl text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-600 focus:shadow-amber-200 bg-transparent px-5 py-2"
           >
             Resume
           </button>
 
           <button
-            class="cursor-pointer rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-300 focus:shadow-amber-200 bg-transparent px-5 py-2"
+            class="cursor-pointer rounded-2xl text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-600 focus:shadow-amber-200 bg-transparent px-5 py-2"
           >
             Projects
           </button>
           <button
-            class="cursor-pointer rounded-md text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-300 focus:shadow-amber-200 bg-transparent px-5 py-2"
+            class="cursor-pointer rounded-2xl text-white font-semibold transition duration-300 ease-in-out hover:bg-gray-800 hover:ring-2 hover:ring-gray-800 hover:shadow-xl hover:shadow-amber-700 focus:ring-amber-600 focus:shadow-amber-200 bg-transparent px-5 py-2"
           >
             Contacts
           </button>
-          
         </ol>
       </nav>
     </header>
 
     <main class="mt-4 flex justify-around gap-12 pl-6">
       <div class="flex flex-col max-w-[900px] rounded-2xl p-4 gap-2">
-        <div>
-          <h1 class="pt-4 pr-4 pb-1 pl-4 text-6xl mb-0">
-            Hi, I'm Debasish 👋..
+        <div id="textBox" >
+
+          <h1 class="pt-4 pr-4 pb-1 pl-4 text-3xl mb-0 font-PressStart2P z-50">
+            Hi, I'm Debasish 👋...
           </h1>
-          <p class="pl-9 mt-5 text-3xl leading-tight">
+          <p class="pl-11 mt-5 text-3xl leading-tight font-Tektur z-50">
             A Frontend-focused MERN Stack Developer & B.Tech Student I build
             fast, responsive, and full-stack web applications.
           </p>
@@ -45,13 +51,20 @@
       </div>
       <div class="flex justify-end items-baseline pr-10">
         <img
-          class="h-fit max-w-100 border rounded-full w-fit"
+          class="h-fit max-w-100 rounded-full w-fit"
           src="./assets/ChatGPT Image Jul 2, 2025, 09_03_37 PM.png"
           alt="picture"
         />
       </div>
     </main>
+    
 
-    <footer></footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
+      integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./script.js"></script>
   </body>
 </html>
