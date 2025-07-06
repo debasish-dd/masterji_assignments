@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Webapp</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="search">
+            <input id="search-bar" type="text" placeholder="enter city name">
+        </div>
+        <div class="weather">
+            <div class="top-img">
+                <div class="img-p">
+                    <img src="./assets/cloud-50.png" class="weather-icon">
+                    <p id="weather-p">cloudy</p>
+                </div>
+                <div class="temp-div">
+                    <img src="./assets/thermometer-50.png" alt="">
+                    <h1 id="temp">22°C</h1>
+                    <h2 id="city">Goa</h1>
+                </div>
+            </div>
+            <div class="details">
+                <div class="col">
+                    <img src="./assets/moisture-50.png" alt="">
+                    <div class="humidity">
+                        <p id="humidity-id" >50%</p>
+                        <p>humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="./assets/wind-50.png" alt="">
+                    <div class="wind">
+                        <p id="wind-val">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
