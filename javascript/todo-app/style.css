@@ -1,172 +1,172 @@
 * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-      }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-      body {
-        background: linear-gradient(135deg, #141e30, #243b55);
-        min-height: 100vh;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-      }
+body {
+  background: linear-gradient(135deg, #141e30, #243b55);
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
 
-      .heading-line {
-        font-size: 2.8rem;
-        font-weight: 700;
-        background: linear-gradient(to right, #ff8c00, #ffa500);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 2rem;
-      }
+.heading-line {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #ff8c00, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
 
-      .card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border-radius: 16px;
-        padding: 2rem;
-        max-width: 800px;
-        width: 100%;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      }
-      .input-div {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1.5rem 0;
-      }
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
 
-      .input {
-        padding: 0.75rem 1rem;
-        border-radius: 10px;
-        border: 2px solid #555;
-        outline: none;
-        background: #2b2b2b;
-        color: #fff;
-        width: 100%;
-        max-width: 350px;
-        transition: all 0.3s ease;
-      }
+.input-div {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
 
-      .input:focus {
-        border-color: #ffa500;
-        box-shadow: 0 0 10px #ffa500;
-      }
+.input {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #555;
+  outline: none;
+  background: #2b2b2b;
+  color: #fff;
+  width: 100%;
+  max-width: 350px;
+  transition: all 0.3s ease;
+}
 
-      .add-btn {
-        background: linear-gradient(135deg, #ffa500, #ff8c00);
-        border: none;
-        padding: 0 1.2rem;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+.input:focus {
+  border-color: #ffa500;
+  box-shadow: 0 0 10px #ffa500;
+}
 
-      .add-btn:hover {
-        background: linear-gradient(135deg, #ff8c00, #ffa500);
-      }
+.add-btn {
+  background: linear-gradient(135deg, #ffa500, #ff8c00);
+  border: none;
+  padding: 0 1.2rem;
+  height: 45px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      #list-div {
-        background-color: rgba(255, 255, 255, 0.05);
-        padding: 1rem;
-        border-radius: 12px;
-        max-height: 400px;
-        overflow-y: auto;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      }
+.add-btn:hover {
+  background: linear-gradient(135deg, #ff8c00, #ffa500);
+}
 
-      .todo {
-        background-color: rgba(255, 255, 255, 0.1);
-        margin: 10px 0;
-        padding: 1rem;
-        border-radius: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background 0.3s ease;
-      }
+#list-div {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
 
-      .todo:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
+.todo {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
-      .container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
+.todo:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
-      .task-text {
-        font-size: 1rem;
-      }
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
 
-      .container input[type="checkbox"] {
-        accent-color: #ffa500;
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-      }
+.task-text {
+  font-size: 1rem;
+  word-break: break-word;
+  max-width: 100%;
+  white-space: normal;
+}
 
-      .d-btn {
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        padding: 6px;
-        border-radius: 50%;
-        transition: background 0.3s;
-      }
+.container input[type="checkbox"] {
+  accent-color: #ffa500;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
 
-      .d-btn:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-      }
+.d-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .tooltip {
-        position: relative;
-        display: inline-block;
-      }
+.d-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 70px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        top: -35px;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
 
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-      ::-webkit-scrollbar{
-        display: none;
-      }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
-      
-      @media screen and (max-width: 600px) {
-        .input-div {
-          flex-direction: column;
-        }
-
-        .todo {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
- 
+::-webkit-scrollbar {
+  display: none;
+}
