@@ -78,7 +78,7 @@ body {
 
 #list-div {
   background-color: rgba(255, 255, 255, 0.05);
-  padding: 1rem;
+  padding: 1.2rem;
   border-radius: 12px;
   max-height: 400px;
   overflow-y: auto;
@@ -169,4 +169,14 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+#todo-lists {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checked {
+  text-decoration:line-through;
+  opacity: 0.5;
+  transition: all 0.2s ease-in-out;
 }
