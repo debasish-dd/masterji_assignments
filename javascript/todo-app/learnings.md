@@ -1,0 +1,4 @@
+- got so much more clarity on DOM
+- Learned to handle dynamic elements
+- learned about localStorage
+- Better understanding on Event Delegation
