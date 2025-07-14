@@ -1,53 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post Form</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <div class="form-div">
-    <form id="form-id" class="form" onclick="validateForm">
-      <div class="flex">
-        <label>
-          <input id="fname" class="input" type="text" placeholder="" required="" />
-          <span>first name</span>
-        </label>
-
-        <label>
-          <input id="lname" class="input" type="text" placeholder="" />
-          <span>last name</span>
-        </label>
+  <body>
+    <dialog class="popup-card">
+      <span class="title">Note</span>
+      <p class="description">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem esse est aliquid eveniet tempora commodi perspiciatis unde tempore. Nisi vitae magni tempora enim doloribus fugit deserunt quibusdam autem impedit officiis.
+      </p>
+      <div class="actions">
+        <button class="accept" id="okBTN">OK</button>
       </div>
+    </dialog>
+    <div class="form-div">
+      <form id="form-id" class="form" onclick="validateForm">
+        <div class="flex">
+          <label>
+            <input
+              id="fname"
+              class="input"
+              type="text"
+              placeholder=""
+              required=""
+            />
+            <span>first name</span>
+          </label>
 
-      <label>
-        <input id="email" class="input" type="email" placeholder="" required="" />
-        <span>email</span>
-      </label>
+          <label>
+            <input id="lname" class="input" type="text" placeholder="" />
+            <span>last name</span>
+          </label>
+        </div>
 
-      <label>
-        <input id="cnumber" class="input" placeholder="" type="tel" required="" />
-        <span>contact number</span>
-      </label>
-      <label>
-        <textarea id="user-message" class="input01" placeholder="" rows="3" required=""></textarea>
-        <span>message</span>
-      </label>
+        <label>
+          <input
+            id="email"
+            class="input"
+            type="email"
+            placeholder=""
+            required=""
+          />
+          <span>email</span>
+        </label>
+        <label>
+          <input
+            id="password"
+            class="input"
+            type="password"
+            placeholder=""
+            required=""
+          />
+          <span>password</span>
+        </label>
 
-      <button href="#" class="fancy">
-        <span class="top-key"></span>
-        <span class="text">submit</span>
-        <span class="bottom-key-1"></span>
-        <span class="bottom-key-2"></span>
-      </button>
-    </form>
-  </div>
+        <label>
+          <input
+            id="cnumber"
+            class="input"
+            placeholder=""
+            type="tel"
+            required=""
+          />
+          <span>contact number</span>
+        </label>
+        <label>
+          <textarea
+            id="user-message"
+            class="input01"
+            placeholder=""
+            rows="3"
+            required=""
+          ></textarea>
+          <span>message</span>
+        </label>
 
+        <button href="#" class="fancy" type="submit">
+          <span class="top-key"></span>
+          <span class="text">submit</span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </button>
+      </form>
+    </div>
 
-  <script src="./script.js"></script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
