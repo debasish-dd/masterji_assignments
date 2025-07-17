@@ -1,7 +1,7 @@
 const api = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='
 const input = document.getElementById('search-box')
 const cardContainer = document.getElementById('card')
-const nodish = document.querySelector('.no-dish');
+const nodish = document.querySelector('.no-dish')
 
 input.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
@@ -13,61 +13,68 @@ input.addEventListener('keydown', event => {
   }
 })
 
-async function getApi (apikey) {
+async function getApi(apikey) {
   try {
-    const response = await fetch(apikey);
-   const data =  await response.json();
-    showData(data)
+
+    const response = await fetch(apikey)
+    const data = await response.json()
+  
+    showData(data )
+      console.log(data);
+
+      
   } catch (error) {
-    console.log(' error - > ', error);
-    
-    nodish.style.display = "block";
+    console.log(' error - > ', error)
+
+    nodish.style.display = 'block' // bug - not showing!!
   }
 }
 
-function showData(data){
-    const allMeals = data.meals;
-  const card = cardContainer;
+function showData(data ) {
+  const allMeals = data.meals
   
-  // Clear previous results
-  card.innerHTML = '';
+  
+  const card = cardContainer
 
-    if (!allMeals) {
-    nodish.style.display = "block"; // Show message if no meals
-    return;
+  // Clear previous results
+  card.innerHTML = ''
+
+  if (!allMeals) {
+    return (nodish.style.display = 'block') // Show message if no meals
   }
 
-  nodish.style.display = "none"; // Hide message when meals exist
-
+  nodish.style.display = 'none' // Hide message when meals exist
 
   allMeals.forEach(element => {
-    card.appendChild(createCard(element));
-  });
-    
+
+    card.appendChild(createCard(element))
+    const dishID = element.idMeal
+  console.log("dish id is: -" , dishID); //got the dish id here
+
+  })
 }
 
-function createCard(element){
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add("card");
+function createCard(element) {
+  const cardDiv = document.createElement('div')
+  cardDiv.classList.add('card')
 
-    // Thumbnail image
-  const thumbImage = document.createElement('img');
-  thumbImage.src = element.strMealThumb;
-  thumbImage.alt = element.strMeal;
-  thumbImage.classList.add('thumbnail-img');
+  // Thumbnail image
+  const thumbImage = document.createElement('img')
+  thumbImage.src = element.strMealThumb
+  thumbImage.alt = element.strMeal
+  thumbImage.classList.add('thumbnail-img')
 
-// Info section
-  const infoDiv = document.createElement('div');
-  infoDiv.classList.add('info-div');
+  // Info section
+  const infoDiv = document.createElement('div')
+  infoDiv.classList.add('info-div')
 
-  const name = document.createElement('p');
-  name.classList.add('dish-name');
-  name.innerText = `Name: ${element.strMeal}`;
+  const name = document.createElement('p')
+  name.classList.add('dish-name')
+  name.innerText = `Name: ${element.strMeal}`
 
-  infoDiv.appendChild(name);
-  cardDiv.appendChild(thumbImage);
-  cardDiv.appendChild(infoDiv);
+  infoDiv.appendChild(name)
+  cardDiv.appendChild(thumbImage)
+  cardDiv.appendChild(infoDiv)
 
-  return cardDiv;
-
+  return cardDiv
 }
