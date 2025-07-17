@@ -5,8 +5,12 @@
 }
 
 body {
-  background-color: #2d2d2d;
   color: #ffffff;
+  background-color: #2a2a2a;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('./assets/background-img.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-size: 100% 120%;
 }
 
 .logo {
@@ -18,11 +22,10 @@ body {
   cursor: pointer;
 }
 .logo:hover {
-    /* background-color: #c37f0000; */
-    transform: scale(1.04);
-    transition: 0.2s ease;
-    box-shadow: 2px 2px 15px rgb(255, 183, 0);
-  
+  /* background-color: #c37f0000; */
+  transform: scale(1.04);
+  transition: 0.2s ease;
+  box-shadow: 2px 2px 15px rgb(255, 183, 0);
 }
 .logo-text {
   font-size: 22px;
@@ -35,22 +38,22 @@ body {
   top: 0;
   position: fixed;
   padding: 9px 18px;
-  margin-top: 18px ;
+  margin-top: 18px;
   border-radius: 8px;
-  
 }
-#search-bar label{
-    font-size: 21px;
-    margin: 5px;
-    padding: 5px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+#search-bar label {
+  font-size: 21px;
+  margin: 5px;
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #search-box {
   border-radius: 10px;
   outline: 1.5px solid #fea500;
   border: 0;
-  font-family: -apple-system,'Segoe UI','Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, 'Segoe UI', 'Open Sans', 'Helvetica Neue',
+    sans-serif;
   background-color: #e2e2e2;
   outline-offset: 3px;
   padding: 10px 1rem;
@@ -59,9 +62,64 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
 #search-box:focus {
   outline-offset: 5px;
-  background-color: #fff
+  background-color: #fff;
 }
 
+.card{
+  background-color: #fea500;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+.thumbnail-img{
+  height: 200px;
+  width: 210px;
+  margin: 8px;
+  border-radius: 15px;
+  margin: 10px;
+  margin-left: 17px;
+}
+.info-div{
+  padding: 12px;
+  text-align: left;
+  font-size: 18px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+}
+.dish-name ,.ingredient{
+margin: 2px;
+font-weight: 600;
+color: #000000;
+}
+
+#card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.no-dish{
+  background-color: #00000070;
+  margin: 20px;
+  margin-top: 50px;
+  padding: 10px;
+  font-size: x-large;
+  border-radius: 12px;
+  display:none;
+}
