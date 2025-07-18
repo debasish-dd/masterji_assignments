@@ -49,7 +49,7 @@ function showData(data ) {
 
     card.appendChild(createCard(element))
     const dishID = element.idMeal
-  console.log("dish id is: -" , dishID); //got the dish id here
+  // console.log("dish id is: -" , dishID); //got the dish id here
 
   })
 }
@@ -76,5 +76,60 @@ function createCard(element) {
   cardDiv.appendChild(thumbImage)
   cardDiv.appendChild(infoDiv)
 
+  cardDiv.addEventListener("click" , ()=>{
+    const dishId = element.idMeal;
+    // console.log(dishid);
+    callDishById(dishId)
+    
+  })
   return cardDiv
+}
+
+async function callDishById(id) {
+  const dishAPI = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+
+  try {
+
+  const response = await fetch(dishAPI);
+  const data = await response.json();
+
+  const dishInstructions = data.meals[0].strInstructions
+
+  console.log("dish is -->" , dishInstructions );
+    addPopUpInstructions(dishInstructions)
+
+  } catch (error) {
+    console.error("error while fetching the instructions -->" , error);
+      
+  }
+
+}
+
+function addPopUpInstructions(instructions){
+    console.log(instructions);
+    
+  const instP = document.createElement('p');
+  instP.innerText = instructions;
+
+  const marginDiv = document.createElement('div');
+  marginDiv.classList.add("margin");
+  
+
+  const popUpDiv = document.querySelector(".page");
+  popUpDiv.innerHTML = "";
+  popUpDiv.appendChild(marginDiv);
+  popUpDiv.appendChild(instP);
+
+  const lightbox = document.getElementById('lightbox');
+  lightbox.style.display = "flex"
+
+  lightbox.addEventListener("click" , (event)=>{
+    if (event.target !== popUpDiv && event.target===lightbox ) {
+      lightbox.style.display = "none"
+      console.log("success" , event.currentTarget);
+    }
+    
+    
+  })
+
 }
