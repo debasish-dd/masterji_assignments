@@ -24,7 +24,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
-  background-color: rgba(0, 0, 0, 0.7); /* Added background for visibility */
+  background-color: rgba(0, 0, 0, 0.75); 
   flex-wrap: wrap;
 }
 
@@ -146,15 +146,16 @@ main {
 }
 
 .no-dish {
-  background-color: #00000070;
+  background-color: #00000085;
   margin: 1rem auto;
   padding: 0.5rem;
+  height: 1em;
   font-size: clamp(1rem, 5vw, 1.5rem);
   border-radius: 12px;
-  display: none;
   text-align: center;
   width: 90%;
   max-width: 600px;
+  
 }
 
 #lightbox {
@@ -255,7 +256,7 @@ main {
   }
 
   main {
-    margin-top: 7rem; /* Increased to prevent overlap with navbar */
+    margin-top: 7rem; 
   }
 
   .card {
@@ -304,7 +305,7 @@ main {
   }
 
   main {
-    margin-top: 6rem; /* Adjusted for smaller navbar height */
+    margin-top: 6rem; 
   }
 
   .card {

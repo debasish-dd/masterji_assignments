@@ -1,7 +1,7 @@
 const api = 'https://www.themealdb.com/api/json/v1/1/filter.php?i='
 const input = document.getElementById('search-box')
 const cardContainer = document.getElementById('card')
-const nodish = document.querySelector('.no-dish')
+
 
 input.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
@@ -24,9 +24,10 @@ async function getApi(apikey) {
 
       
   } catch (error) {
-    console.log(' error - > ', error)
-
-    nodish.style.display = 'block' // bug - not showing!!
+    const nodishP = document.createElement('p');
+    nodishP.classList.add('no-dish');
+    cardContainer.appendChild(nodishP)
+    console.error(' error while fetching api- > ', error) 
   }
 }
 
@@ -38,12 +39,6 @@ function showData(data ) {
 
   // Clear previous results
   card.innerHTML = ''
-
-  if (!allMeals) {
-    return (nodish.style.display = 'block') // Show message if no meals
-  }
-
-  nodish.style.display = 'none' // Hide message when meals exist
 
   allMeals.forEach(element => {
 
