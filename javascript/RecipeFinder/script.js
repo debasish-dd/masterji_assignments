@@ -90,7 +90,7 @@ async function callDishById(id) {
 
   const dishInstructions = data.meals[0].strInstructions
 
-  console.log("dish is -->" , dishInstructions );
+ 
     addPopUpInstructions(dishInstructions)
 
   } catch (error) {
