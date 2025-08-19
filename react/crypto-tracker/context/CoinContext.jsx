@@ -14,7 +14,7 @@ export const CoinContextProvider = ({ children }) => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                'x-cg-demo-api-key': 'CG-2tBndqeXjpxZxYUQb3UKX7LP'
+                'x-cg-demo-api-key': ''
             }
         };
 
