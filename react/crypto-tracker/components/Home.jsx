@@ -5,9 +5,9 @@ function Home() {
   const { allCoins, currency } = useCoins()
 
   return (
-    <div className="max-w-6xl mx-auto px-2">
+    <div className="max-w-6xl mx-auto px-2 pt-44 md:pt-28 lg:pt-24">
       {/* Header Row */}
-      <div className="hidden sm:grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] p-4 rounded-t-2xl items-center border-b mt-5 bg-gradient-to-r from-blue-200 to-cyan-200 text-black text-sm sm:text-base">
+      <div className="hidden sm:grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] p-4 rounded-t-2xl items-center border-b mt-5 bg-gradient-to-r from-blue-200 to-cyan-200 text-black text-sm sm:text-base font-bold">
         <p>#</p>
         <p>Coins</p>
         <p>Price</p>

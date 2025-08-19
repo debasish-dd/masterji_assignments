@@ -18,14 +18,14 @@ function Navbar() {
     }
 
     return (
-        <div className="text-white flex flex-col md:flex-row justify-between items-center w-full bg-gray-800 px-4 py-3 gap-3 md:gap-0 shadow-xl">
+        <div className="text-white flex flex-col md:flex-row justify-between items-center w-full bg-gray-800 px-4 py-3 gap-3 md:gap-0 shadow-xl fixed">
             {/* Logo */}
-            <h1 className="text-2xl md:text-4xl bg-gray-600 px-4 py-2 rounded-2xl cursor-pointer">
+            <h1 className=" text-4xl m-2 bg-gray-600 p-3 rounded-2xl cursor-pointer">
                 Crypto Tracker
             </h1>
 
             {/* Right Side */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center w-full md:w-auto">
+            <div className="flex justify-around gap-3 sm:gap-5 items-center w-full md:w-auto">
                 
                 {/* Search Input */}
                 <form className="w-full sm:w-[250px] md:w-[330px] shadow-2xl">
