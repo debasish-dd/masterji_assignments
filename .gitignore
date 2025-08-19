@@ -1,2 +1,3 @@
 gen-ai/persona-ai/.gitignore
 gen-ai/persona-ai/.env
+.env
