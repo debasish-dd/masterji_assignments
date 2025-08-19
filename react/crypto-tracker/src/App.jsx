@@ -9,7 +9,7 @@ function App() {
 
   const {allCoins} =  useCoins()
   return (
-   <div className='bg-gradient-to-t from-stone-500 via-neutral-500 to-gray-700 min-h-screen text-white'>
+   <div className='bg-gradient-to-t from-stone-500 via-neutral-500 to-gray-700 min-h-screen text-white overflow-x-hidden'>
     <Navbar/>
     
     <Home/>
