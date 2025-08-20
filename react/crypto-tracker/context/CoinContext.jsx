@@ -8,13 +8,14 @@ export const CoinContextProvider = ({ children }) => {
         name: 'usd',
         symbol: '$'
     })
-
+    
+    const [displayCoins, setDisplayCoins] = useState([])
     async function fetchAllCoin() {
         const options = {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                'x-cg-demo-api-key': ''
+                'x-cg-demo-api-key': import.meta.env.VITE_CRYPTO_KEY
             }
         };
 
@@ -28,8 +29,14 @@ export const CoinContextProvider = ({ children }) => {
     fetchAllCoin();
    }, [currency])
 
+    useEffect(() => {
+    setDisplayCoins(allCoins)
+   
+  }, [allCoins])
+  
+
     return (
-        <CoinContext.Provider value={{ allCoins, currency, setCurrency  }}>
+        <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins }}>
             {children}
         </CoinContext.Provider>
     )
