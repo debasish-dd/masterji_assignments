@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import useCoins from '../context/CoinContext'
 
 function Navbar () {
-  const { setCurrency  , setDisplayCoins , allCoins } = useCoins()
+  const { setCurrency, setDisplayCoins, allCoins } = useCoins()
 
   const currencySelector = e => {
     if (e.target.value === 'INR') {
@@ -18,23 +18,17 @@ function Navbar () {
     }
   }
 
-async  function inputHandler(e) {
-  const val = e.target.value.trim().toLowerCase();
-  
+  function inputHandler (e) {
+    const val = e.target.value.trim().toLowerCase()
 
-  const coins = await allCoins.filter((coin) =>
-    coin.name.toLowerCase().includes(val)
-  );
-  setDisplayCoins(coins);
-
-    
+    const coins = allCoins.filter(coin => coin.name.toLowerCase().includes(val))
+    setDisplayCoins(coins)
   }
 
-  function preventSubmit(e) {
-  e.preventDefault();
+  function preventSubmit (e) {
+    e.preventDefault()
   }
 
- 
   return (
     <div className='text-white flex flex-col md:flex-row justify-between items-center w-full bg-stone-900 px-4 py-3 gap-3 md:gap-0 shadow-xl fixed'>
       {/* Logo */}
@@ -45,7 +39,10 @@ async  function inputHandler(e) {
       {/* Right Side */}
       <div className='flex justify-around gap-3 sm:gap-5 items-center w-full md:w-auto'>
         {/* Search Input */}
-        <form onSubmit={preventSubmit}   className='w-full sm:w-[250px] md:w-[330px] shadow-2xl'>
+        <form
+          onSubmit={preventSubmit}
+          className='w-full sm:w-[250px] md:w-[330px] shadow-2xl'
+        >
           <div className='relative'>
             <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
               <svg
@@ -64,9 +61,8 @@ async  function inputHandler(e) {
                 />
               </svg>
             </div>
-            <input 
-               onChange={inputHandler}
-               
+            <input
+              onChange={inputHandler}
               required
               placeholder='Search'
               className='block w-full p-3 ps-10 text-base md:text-lg text-gray-900 border border-gray-300 shadow-2xl rounded-lg bg-stone-900 

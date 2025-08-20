@@ -3,6 +3,7 @@ import React from 'react'
 import useCoins from '../context/CoinContext'
 import Navbar from '../components/Navbar'
 import Home from '../components/Home'
+import Coins from '../components/Coins'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
     <Navbar/>
     
     <Home/>
+   
    </div>
   )
 }

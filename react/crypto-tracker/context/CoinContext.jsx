@@ -8,7 +8,7 @@ export const CoinContextProvider = ({ children }) => {
         name: 'usd',
         symbol: '$'
     })
-    
+
     const [displayCoins, setDisplayCoins] = useState([])
     async function fetchAllCoin() {
         const options = {
@@ -25,16 +25,17 @@ export const CoinContextProvider = ({ children }) => {
             .catch(err => console.error(err));
     }
 
-   useEffect(()=>{
-    fetchAllCoin();
-   }, [currency])
+    useEffect(() => {
+        fetchAllCoin();
+    }, [currency])
 
     useEffect(() => {
-    setDisplayCoins(allCoins)
-   
-  }, [allCoins])
-  
+        setDisplayCoins(allCoins)
 
+    }, [allCoins])
+
+
+     
     return (
         <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins }}>
             {children}
