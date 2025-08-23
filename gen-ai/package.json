@@ -1,0 +1,20 @@
+{
+  "name": "gen-ai",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "chalk-animation": "^2.0.3",
+    "dotenv": "^17.2.1",
+    "inquirer": "^12.9.3",
+    "js-tiktoken": "^1.0.21",
+    "openai": "^5.15.0"
+  }
+}

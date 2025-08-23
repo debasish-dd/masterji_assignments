@@ -1,3 +1,2 @@
-gen-ai/persona-ai/.gitignore
-gen-ai/persona-ai/.env
+gen-ai/chaicode_cli/.env
 .env
