@@ -8,7 +8,8 @@ export const CoinContextProvider = ({ children }) => {
         name: 'usd',
         symbol: '$'
     })
-
+    
+    const [currId, setCurrId] = useState("")
     const [displayCoins, setDisplayCoins] = useState([])
     async function fetchAllCoin() {
         const options = {

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import useCoins from '../context/CoinContext'
+import { Link } from 'react-router-dom'
 
 function Navbar () {
   const { setCurrency, setDisplayCoins, allCoins } = useCoins()
@@ -32,9 +33,9 @@ function Navbar () {
   return (
     <div className='text-white flex flex-col md:flex-row justify-between items-center w-full bg-stone-900 px-4 py-3 gap-3 md:gap-0 shadow-xl fixed'>
       {/* Logo */}
-      <h1 className=' text-4xl m-2 bg-stone-900 p-3 rounded-2xl cursor-pointer'>
+      <Link to={'/'} className=' text-4xl m-2 bg-stone-900 p-3 rounded-2xl cursor-pointer'>
         Crypto Tracker
-      </h1>
+      </Link>
 
       {/* Right Side */}
       <div className='flex justify-around gap-3 sm:gap-5 items-center w-full md:w-auto'>

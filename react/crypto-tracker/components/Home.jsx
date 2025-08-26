@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import useCoins from '../context/CoinContext'
+import { Link } from 'react-router-dom';
+
 
 function Home() {
-  const {  currency , displayCoins } = useCoins();
+  const {  currency , displayCoins , setCurrId } = useCoins();
   
   
  
@@ -18,7 +19,8 @@ function Home() {
       </div>
 
       {displayCoins.slice(0, 10).map((item, index) => (
-        <div
+        <Link
+          to={`/coins/${item.id}`}
           key={index}
           className="grid sm:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] gap-3 items-center border-b text-sm sm:text-base p-3 sm:px-4 bg-neutral-700 border-b-neutral-950"
         >
@@ -55,7 +57,7 @@ function Home() {
             {currency.symbol}
             {item.market_cap.toLocaleString()}
           </p>
-        </div>
+        </Link>
       ))}
     </div>
   )
