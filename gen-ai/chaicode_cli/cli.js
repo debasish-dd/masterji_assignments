@@ -5,15 +5,12 @@ import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
 
 
-
+chalkAnimation.rainbow("---Welcome to WebScraper CLI--- \n");
 
 dotenv.config();
 
 
-const openai = new OpenAI({
-    apiKey: process.env.GEMINI_API_KEY,
-    baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
-});
+const openai = new OpenAI();
 
 const systemPrompt = `
     You are an AI assistant who works on START, THINK and OUTPUT format.
@@ -66,16 +63,16 @@ const systemPrompt = `
 
 const messages = [
     { role: "system", content: systemPrompt },
-    
+
 ]
 
-chalkAnimation.rainbow("---Welcome to WebScraper CLI--- \n");
+
 
 async function main() {
 
 
     while (true) {
-       
+
 
         const answers = await inquirer.prompt([
             {
@@ -87,10 +84,10 @@ async function main() {
 
         // save to a file
         // fs.writeFileSync("output.txt", answers.userInput);
-       messages.push({ role: "user", content: answers.userInput });
+        messages.push({ role: "user", content: answers.userInput });
 
         const response = await openai.chat.completions.create({
-            model: "gemini-2.0-flash",
+            model: 'gpt-5-mini',
             messages: messages,
         });
 
@@ -101,13 +98,13 @@ async function main() {
         const parsedText = JSON.parse(jsonMatch);
         console.log("AI Response: ", parsedText.content);
 
-        
+
 
         if (parsedText.step === "OUTPUT" || parsedText.isComplete) {
             break;
 
         }
-        
+
     }
 
 
