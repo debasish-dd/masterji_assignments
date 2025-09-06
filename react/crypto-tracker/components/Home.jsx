@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 function Home() {
-  const {  currency , displayCoins , setCurrId } = useCoins();
+  const {  currency , displayCoins  } = useCoins();
   
   
  

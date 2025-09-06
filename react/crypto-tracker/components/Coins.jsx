@@ -4,29 +4,27 @@ import useCoins from '../context/CoinContext'
 
 //now have to add the chart
 export default function Coins() {
-    
-    
+
+
     const { coinId } = useParams()
     const [coinData, setCoinData] = useState('null')
     const [historicalCoinData, setHistoricalCoinData] = useState()
-    const { currency , displayCoins } = useCoins()
+    const { currency, displayCoins } = useCoins()
 
 
-   const coin = displayCoins.find(({ id }) => id === coinId);
-   const coinPrice = coin ? coin.current_price : null;
+    const coin = displayCoins.find(({ id }) => id === coinId);
+    const coinPrice = coin ? coin.current_price : null;
 
 
     async function fetchCoinData() {
         try {
-            const res = await fetch(
-                `https://api.coingecko.com/api/v3/coins/${coinId}`,
-                {
-                    headers: {
-                        accept: 'application/json',
-                        'x-cg-api-key': 'CG-2tBndqeXjpxZxYUQb3UKX7LP'
-                    }
-                }
-            )
+            const res = await fetch(`/api/coins/${coinId}`, {
+                headers: {
+                    accept: "application/json",
+                    "x-cg-api-key": import.meta.env.VITE_CRYPTO_KEY,
+                },
+            });
+
             const data = await res.json()
             setCoinData(data)
         } catch (err) {
@@ -34,27 +32,29 @@ export default function Coins() {
         }
     }
 
+
+
     async function fetchHistoricalData() {
         const options = {
             method: 'GET',
-            headers: { accept: 'application/json', 'x-cg-demo-api-key': 'CG-2tBndqeXjpxZxYUQb3UKX7LP' }
+            headers: { accept: 'application/json', 'x-cg-demo-api-key': import.meta.env.VITE_CRYPTO_KEY }
         };
 
-        fetch(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=${currency.name}&days=7`, options)
+        fetch(`/api/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=7`)
             .then(res => res.json())
             .then(res => setHistoricalCoinData(res))
             .catch(err => console.error(err));
-           
+
     }
-    
-    
+
+
     useEffect(() => {
         fetchCoinData()
-        
-    }, [coinId, currency])
-    
 
-    
+    }, [coinId, currency])
+
+
+
     return (
         <div className='mt-26'>
             <div className='flex justify-items-start gap-2 mx-2'>
@@ -104,7 +104,7 @@ export default function Coins() {
                 {coinData?.description?.en}
             </p>
             <div className='m-6'>
-                <p className='text-4xl'>{currency.name==='usd' ? `$${coinPrice?.toLocaleString()}` : `₹${coinPrice?.toLocaleString()}`}</p>
+                <p className='text-4xl'>{currency.name === 'usd' ? `$${coinPrice?.toLocaleString()}` : `₹${coinPrice?.toLocaleString()}`}</p>
                 <div className='flex justify-start'>
                     <p className='mr-2'>Last 7 days </p>
                     <p> +2.3%</p>
