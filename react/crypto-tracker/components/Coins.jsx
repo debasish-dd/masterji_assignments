@@ -1,6 +1,8 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import useCoins from '../context/CoinContext'
+import LineChart from './LineChartComponent'
+import LineChartComponent from './LineChartComponent'
 
 //now have to add the chart
 export default function Coins() {
@@ -21,7 +23,7 @@ export default function Coins() {
             const res = await fetch(`/api/coins/${coinId}`, {
                 headers: {
                     accept: "application/json",
-                    "x-cg-api-key": import.meta.env.VITE_CRYPTO_KEY,
+                    'x-cg-api-key': import.meta.env.VITE_CRYPTO_KEY,
                 },
             });
 
@@ -50,8 +52,12 @@ export default function Coins() {
 
     useEffect(() => {
         fetchCoinData()
+        fetchHistoricalData()
 
     }, [coinId, currency])
+
+
+
 
 
 
@@ -111,7 +117,15 @@ export default function Coins() {
                 </div>
             </div>
 
-            {/* graph */}
+            {/* chart */}
+            <div className='m-6 bg-stone-600 rounded-md shadow'>
+                {historicalCoinData ? (
+                    <LineChartComponent historicalCoinData={historicalCoinData} />
+                ) : (
+                    <p>Loading chart...</p>
+                )}
+            </div>
+
         </div>
     )
 }
