@@ -118,12 +118,55 @@ export default function Coins() {
             </div>
 
             {/* chart */}
-            <div className='m-6 bg-stone-600 rounded-md shadow'>
+            <div className='m-6 bg-gray-800 rounded-xl shadow w-100%'>
                 {historicalCoinData ? (
                     <LineChartComponent historicalCoinData={historicalCoinData} />
                 ) : (
                     <p>Loading chart...</p>
                 )}
+            </div>
+
+            {/* coin Stats */}
+            <div className='m-6 bg-neutral-700 p-4 rounded-md shadow text-center text-2xl font-bold'>
+                <h2> {coinId?.toString().charAt(0).toUpperCase() + coinId?.toString().slice(1)} Stats  </h2>
+            </div>
+
+                {/* comparison table info */}
+
+
+            <div className="grid grid-cols-5 grid-rows-5 gap-4 text-center m-6 bg-neutral-700 p-4 rounded-md shadow text-lg">
+                <div >
+                    <h3>Market Cap</h3>
+                    <p></p>
+                </div>
+                <div >
+                    <h3>Volume (24h)</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-2">
+                    <h3>Circulating Supply</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-2">
+                    <h3>Total Supply</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-3">
+                    <h3>Max Supply</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-3">
+                    <h3>Full Diluted Valuation</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-4">
+                    <h3>All Time High</h3>
+                    <p></p>
+                </div>
+                <div className="row-start-4">
+                    <h3>All Time Low</h3>
+                    <p></p>
+                </div>
             </div>
 
         </div>

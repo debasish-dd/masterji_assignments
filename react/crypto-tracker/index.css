@@ -1,0 +1,5 @@
+.MuiChartsAxis-tickLabel,
+.MuiChartsAxis-label,
+.MuiChartsLegend-series text {
+  fill: #fff !important;
+}
