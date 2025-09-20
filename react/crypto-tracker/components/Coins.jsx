@@ -14,6 +14,8 @@ export default function Coins() {
     const { currency, displayCoins } = useCoins()
 
 
+
+
     const coin = displayCoins.find(({ id }) => id === coinId);
     const coinPrice = coin ? coin.current_price : null;
 
@@ -111,9 +113,12 @@ export default function Coins() {
             </p>
             <div className='m-6'>
                 <p className='text-4xl'>{currency.name === 'usd' ? `$${coinPrice?.toLocaleString()}` : `₹${coinPrice?.toLocaleString()}`}</p>
-                <div className='flex justify-start'>
+                <div className='flex justify-start '>
                     <p className='mr-2'>Last 7 days </p>
-                    <p> +2.3%</p>
+
+                    <p className='inline-block text-green-600'>{coinData?.market_data?.price_change_percentage_7d>0? '+' : ''} </p>
+                    <p className={coinData?.market_data?.price_change_percentage_7d > 0 ? 'text-green-600' : 'text-red-600'}>  { coinData?.market_data?.price_change_percentage_7d}</p>
+
                 </div>
             </div>
 
@@ -131,43 +136,62 @@ export default function Coins() {
                 <h2> {coinId?.toString().charAt(0).toUpperCase() + coinId?.toString().slice(1)} Stats  </h2>
             </div>
 
-                {/* comparison table info */}
+            {/* comparison table info */}
+        
+        
 
-
-            <div className="grid grid-cols-5 grid-rows-5 gap-4 text-center m-6 bg-neutral-700 p-4 rounded-md shadow text-lg">
-                <div >
-                    <h3>Market Cap</h3>
-                    <p></p>
+            <div className="grid grid-cols-2 gap-4 text-center m-6 bg-neutral-700 p-4 rounded-md shadow text-lg place-items-center">
+                <div className="flex flex-col items-center justify-center p-4  rounded  ">
+                    <h3 className="text-white font-semibold mb-2">Market Cap</h3>
+                    <p className="text-gray-300"> {currency.name=='usd'? '$' : '₹'} {coinData?.market_data?.market_cap[currency.name.toLowerCase()].toLocaleString()} </p>
                 </div>
-                <div >
-                    <h3>Volume (24h)</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">Current Price</h3>
+                    <p className="text-gray-300">
+                       {currency.name=='usd'? '$' : '₹'} {coinData?.market_data?.current_price[currency.name.toLowerCase()].toLocaleString()}
+                    </p>
                 </div>
-                <div className="row-start-2">
-                    <h3>Circulating Supply</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4 rounded">
+                    <h3 className="text-white font-semibold mb-2">Price Change in 30 days</h3>
+                    <p className={` ${coinData?.market_data?.price_change_percentage_30d > 0 ? "text-green-600" : "text-red-600"}`}
+>
+                       {coinData?.market_data?.price_change_percentage_30d.toFixed(2)>0? '+' : '' } {coinData?.market_data?.price_change_percentage_30d.toFixed(2)}%
+                    </p>
                 </div>
-                <div className="row-start-2">
-                    <h3>Total Supply</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">Total Supply</h3>
+                    <p className="text-gray-300"> 
+                      {currency.name=='usd'? '$' : '₹'}  {coinData?.market_data?.total_volume[currency.name.toLowerCase()].toLocaleString()}
+                    </p>
                 </div>
-                <div className="row-start-3">
-                    <h3>Max Supply</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">Max Supply</h3>
+                    <p className="text-gray-300">
+                       {coinData?.market_data?.max_supply ? `${((currency.name=='usd') ? '$' : '₹')} ${coinData.market_data.max_supply.toLocaleString()}` : 'N/A'}
+                    </p>
                 </div>
-                <div className="row-start-3">
-                    <h3>Full Diluted Valuation</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">Full Diluted Valuation</h3>
+                    <p className="text-gray-300">
+                     {coinData?.market_data?.fully_diluted_valuation[currency.name.toLowerCase()] ? ` ${((currency.name=='usd') ? '$' : '₹')} ${coinData.market_data?.fully_diluted_valuation[currency.name.toLowerCase()].toLocaleString()} `: 'N/A'}
+                    </p>
                 </div>
-                <div className="row-start-4">
-                    <h3>All Time High</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">High (24Hr)</h3>
+                    <p className="text-gray-300">
+                      {currency.name=='usd'? '$' : '₹'}  {coinData?.market_data?.high_24h[currency.name.toLowerCase()].toLocaleString()}
+                    </p>
                 </div>
-                <div className="row-start-4">
-                    <h3>All Time Low</h3>
-                    <p></p>
+                <div className="flex flex-col items-center justify-center p-4  rounded">
+                    <h3 className="text-white font-semibold mb-2">Low (24Hr)</h3>
+                    <p className="text-gray-300">
+                      {currency.name=='usd'? '$' : '₹'}  {coinData?.market_data?.low_24h[currency.name.toLowerCase()].toLocaleString()}
+                    </p>
                 </div>
             </div>
+
+
+                    {/* now fix the search bar issue */}
 
         </div>
     )
