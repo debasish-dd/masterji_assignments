@@ -1,9 +1,12 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import useCoins from '../context/CoinContext'
 import { Link } from 'react-router-dom'
 
-function Navbar () {
+function Navbar() {
   const { setCurrency, setDisplayCoins, allCoins } = useCoins()
+  const [searchTerm, setSearchTerm] = useState('');  // Tracks what the user types
+  const [suggestions, setSuggestions] = useState([]);  // Holds filtered coin suggestions
+
 
   const currencySelector = e => {
     if (e.target.value === 'INR') {
@@ -19,14 +22,15 @@ function Navbar () {
     }
   }
 
-  function inputHandler (e) {
+  function inputHandler(e) {
     const val = e.target.value.trim().toLowerCase()
 
     const coins = allCoins.filter(coin => coin.name.toLowerCase().includes(val))
     setDisplayCoins(coins)
+
   }
 
-  function preventSubmit (e) {
+  function preventSubmit(e) {
     e.preventDefault()
   }
 

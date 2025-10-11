@@ -1,10 +1,9 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import useCoins from '../context/CoinContext'
-import LineChart from './LineChartComponent'
 import LineChartComponent from './LineChartComponent'
 
-//now have to add the chart
+
 export default function Coins() {
 
 
