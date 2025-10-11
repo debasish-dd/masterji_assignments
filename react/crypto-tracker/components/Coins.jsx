@@ -74,7 +74,7 @@ export default function Coins() {
 
 
     return (
-        <div className='mt-6'>
+        <div className='mt-7'>
             <div className='flex justify-items-start gap-2 mx-2'>
                 <Link to={'/'} className='cursor-pointer text-lime-400'>
                     Market

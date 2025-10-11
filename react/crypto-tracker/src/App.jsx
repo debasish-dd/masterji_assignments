@@ -12,7 +12,7 @@ function App() {
   return (
    <div className='bg-gradient-to-t from-stone-600 to-neutral-800 min-h-screen text-white overflow-x-hidden'>
     <Navbar/>
-    <div className='pt-24 md:pt-20'>
+    <div className='pt-20 md:pt-24'>
       <Outlet />
     </div>
    </div>
