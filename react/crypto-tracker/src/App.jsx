@@ -6,15 +6,18 @@ import Home from '../components/Home'
 import Coins from '../components/Coins'
 import { Outlet } from 'react-router-dom'
 
+
 function App() {
   
   return (
-   <div className='bg-gradient-to-t from-stone-600 to-neutral-800 min-h-screen text-white overflow-x-hidden overflow-hidden '>
+   <div className='bg-gradient-to-t from-stone-600 to-neutral-800 min-h-screen text-white overflow-x-hidden'>
     <Navbar/>
-    <Outlet />
-   
+    <div className='pt-24 md:pt-20'>
+      <Outlet />
+    </div>
    </div>
   )
 }
+
 
 export default App

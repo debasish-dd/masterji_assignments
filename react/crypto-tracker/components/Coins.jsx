@@ -4,7 +4,9 @@ import useCoins from '../context/CoinContext'
 import LineChartComponent from './LineChartComponent'
 
 
+
 export default function Coins() {
+
 
 
     const { coinId } = useParams()
@@ -15,8 +17,10 @@ export default function Coins() {
 
 
 
+
     const coin = displayCoins.find(({ id }) => id === coinId);
     const coinPrice = coin ? coin.current_price : null;
+
 
 
     async function fetchCoinData() {
@@ -28,6 +32,7 @@ export default function Coins() {
                 },
             });
 
+
             const data = await res.json()
             setCoinData(data)
         } catch (err) {
@@ -37,23 +42,28 @@ export default function Coins() {
 
 
 
+
     async function fetchHistoricalData() {
         const options = {
             method: 'GET',
             headers: { accept: 'application/json', 'x-cg-demo-api-key': import.meta.env.VITE_CRYPTO_KEY }
         };
 
+
         fetch(`/api/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=7`)
             .then(res => res.json())
             .then(res => setHistoricalCoinData(res))
             .catch(err => console.error(err));
 
+
     }
+
 
 
     useEffect(() => {
         fetchCoinData()
         fetchHistoricalData()
+
 
     }, [coinId, currency])
 
@@ -62,8 +72,9 @@ export default function Coins() {
 
 
 
+
     return (
-        <div className='mt-26'>
+        <div className='mt-6'>
             <div className='flex justify-items-start gap-2 mx-2'>
                 <Link to={'/'} className='cursor-pointer text-lime-400'>
                     Market
@@ -115,11 +126,14 @@ export default function Coins() {
                 <div className='flex justify-start '>
                     <p className='mr-2'>Last 7 days </p>
 
+
                     <p className='inline-block text-green-600'>{coinData?.market_data?.price_change_percentage_7d>0? '+' : ''} </p>
                     <p className={coinData?.market_data?.price_change_percentage_7d > 0 ? 'text-green-600' : 'text-red-600'}>  { coinData?.market_data?.price_change_percentage_7d}</p>
 
+
                 </div>
             </div>
+
 
             {/* chart */}
             <div className='m-6 bg-gray-800 rounded-xl shadow w-100%'>
@@ -130,14 +144,17 @@ export default function Coins() {
                 )}
             </div>
 
+
             {/* coin Stats */}
             <div className='m-6 bg-neutral-700 p-4 rounded-md shadow text-center text-2xl font-bold'>
                 <h2> {coinId?.toString().charAt(0).toUpperCase() + coinId?.toString().slice(1)} Stats  </h2>
             </div>
 
+
             {/* comparison table info */}
         
         
+
 
             <div className="grid grid-cols-2 gap-4 text-center m-6 bg-neutral-700 p-4 rounded-md shadow text-lg place-items-center">
                 <div className="flex flex-col items-center justify-center p-4  rounded  ">
@@ -189,8 +206,6 @@ export default function Coins() {
                 </div>
             </div>
 
-
-                    {/* now fix the search bar issue */}
 
         </div>
     )

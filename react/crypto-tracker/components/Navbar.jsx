@@ -2,10 +2,12 @@ import { useState } from 'react'
 import useCoins from '../context/CoinContext'
 import { Link, useNavigate, Outlet } from 'react-router-dom'
 
+
 function Navbar() {
   const { setCurrency, setDisplayCoins, allCoins } = useCoins()
-  const [searchTerm, setSearchTerm] = useState('');  // Tracks what the user types
-  const [suggestions, setSuggestions] = useState([]);  // Holds filtered coin suggestions
+  const [searchTerm, setSearchTerm] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+
 
 
   const currencySelector = e => {
@@ -22,26 +24,32 @@ function Navbar() {
     }
   }
 
+
   function inputHandler(e) {
     const val = e.target.value.trim().toLowerCase()
+
 
     const coins = allCoins.filter(coin => coin.name.toLowerCase().includes(val))
     setDisplayCoins(coins)
 
+
   }
   const navigate = useNavigate();
+
 
   function preventSubmit(e) {
     e.preventDefault()
     navigate('/')
   }
 
+
   return (
-    <div className='text-white flex flex-col md:flex-row justify-between items-center w-full bg-stone-900 px-4 py-3 gap-3 md:gap-0 shadow-xl fixed'>
+    <div className='text-white flex flex-col md:flex-row justify-between items-center w-full bg-stone-900 px-4 py-3 gap-3 md:gap-0 shadow-xl fixed top-0 left-0 z-50'>
       {/* Logo */}
       <Link to={'/'} className=' text-4xl m-2 bg-stone-900 p-3 rounded-2xl cursor-pointer'>
         Crypto Tracker
       </Link>
+
 
       {/* Right Side */}
       <div className='flex justify-around gap-3 sm:gap-5 items-center w-full md:w-auto'>
@@ -101,6 +109,7 @@ function Navbar() {
           </div>
         </form>
 
+
         {/* Currency Selector */}
         <div className='relative inline-flex items-center px-3 py-1 border border-gray-900 bg-stone-700 rounded-xl w-20 shadow-2xl h-11'>
           <select
@@ -134,5 +143,6 @@ function Navbar() {
     </div>
   )
 }
+
 
 export default Navbar
