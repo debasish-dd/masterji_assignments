@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useCoins from '../context/CoinContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, Outlet } from 'react-router-dom'
 
 function Navbar() {
   const { setCurrency, setDisplayCoins, allCoins } = useCoins()
@@ -29,9 +29,11 @@ function Navbar() {
     setDisplayCoins(coins)
 
   }
+  const navigate = useNavigate();
 
   function preventSubmit(e) {
     e.preventDefault()
+    navigate('/')
   }
 
   return (
@@ -128,6 +130,7 @@ function Navbar() {
           </svg>
         </div>
       </div>
+      
     </div>
   )
 }

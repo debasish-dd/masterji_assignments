@@ -1,3 +1,4 @@
 {
-    "editor.wordWrapColumn": 65
+    "editor.wordWrapColumn": 65,
+    "editor.wordWrap": "bounded"
 }
