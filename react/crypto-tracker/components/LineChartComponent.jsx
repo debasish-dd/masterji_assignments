@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { useMediaQuery } from '@mui/material';
+import useCoins from '../context/CoinContext';
 
 export default function LineChartComponent({ historicalCoinData }) {
   const [dates, setDates] = useState([]);
   const [prices, setPrices] = useState([]);
+  const { themeMode } = useCoins();
 
   // ✅ detect screen size for responsiveness
   const isSmall = useMediaQuery('(max-width:600px)');
@@ -16,7 +18,7 @@ export default function LineChartComponent({ historicalCoinData }) {
       const p = [];
 
       historicalCoinData.prices.forEach(([timestamp, price]) => {
-        d.push(timestamp); // keep raw timestamp
+        d.push(timestamp);
         p.push(price);
       });
 
@@ -60,18 +62,14 @@ export default function LineChartComponent({ historicalCoinData }) {
         margin={{ left: 50, right: 30, top: 40, bottom: 40 }}
         sx={{
           '.MuiChartsAxis-tickLabel': {
-            fill: '#fff !important',
+            fill: themeMode ? '#fff !important' : '#000 !important',
             fontSize: 13,
             fontWeight: 500,
           },
           '.MuiChartsAxis-label': {
-            fill: '#fff !important',
+            fill: themeMode ? '#fff !important' : '#000 !important',
           },
-         
-
         }}
-
-
       />
     </div>
   );

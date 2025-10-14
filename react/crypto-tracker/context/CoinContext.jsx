@@ -9,7 +9,7 @@ export const CoinContextProvider = ({ children }) => {
         symbol: '$'
     })
     
-    const [currId, setCurrId] = useState("")
+    const [themeMode, setThemeMode] = useState(true)
     const [displayCoins, setDisplayCoins] = useState([])
     async function fetchAllCoin() {
         const options = {
@@ -38,7 +38,7 @@ export const CoinContextProvider = ({ children }) => {
 
      
     return (
-        <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins }}>
+        <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins, themeMode, setThemeMode }}>
             {children}
         </CoinContext.Provider>
     )

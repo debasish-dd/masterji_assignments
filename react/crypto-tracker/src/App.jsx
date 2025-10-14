@@ -8,14 +8,14 @@ import { Outlet } from 'react-router-dom'
 
 
 function App() {
-  
+  const {themeMode} = useCoins()
   return (
-   <div className='bg-gradient-to-t from-stone-600 to-neutral-800 min-h-screen text-white overflow-x-hidden'>
+   <div className={`${themeMode ? 'bg-gradient-to-b from-gray-700 to-slate-700 text-white' : 'bg-gradient-to-r from-lime-50 to-emerald-50 text-gray-900'} min-h-screen overflow-x-hidden`}>
     <Navbar/>
     <div className='pt-20 md:pt-24'>
       <Outlet />
     </div>
-   </div>
+</div>
   )
 }
 
