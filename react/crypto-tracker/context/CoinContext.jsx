@@ -25,15 +25,16 @@ export const CoinContextProvider = ({ children }) => {
             .then(res => setAllCoins(res))
             .catch(err => console.error(err));
     }
+    useEffect(() => {
+        setDisplayCoins(allCoins)
+
+    }, [allCoins])
 
     useEffect(() => {
         fetchAllCoin();
     }, [currency])
 
-    useEffect(() => {
-        setDisplayCoins(allCoins)
-
-    }, [allCoins])
+    
 
 
      
