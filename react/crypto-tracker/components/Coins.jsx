@@ -56,7 +56,7 @@ export default function Coins() {
     }, [coinId, currency])
 
     return (
-        <div className={`min-h-screen pt-24 sm:pt-0 ${themeMode ? 'bg-gray-800 text-white' : 'bg-gray-50 text-stone-900'} pb-8 transition-colors duration-300`}>
+        <div className={`min-h-screen pt-4 sm:pt-0 ${themeMode ? 'bg-gray-800 text-white' : 'bg-gray-50 text-stone-900'} pb-8 transition-colors duration-300`}>
 
             <div className='flex justify-items-start gap-2 mx-2'>
                 <Link to={'/'} className='cursor-pointer text-blue-600'>

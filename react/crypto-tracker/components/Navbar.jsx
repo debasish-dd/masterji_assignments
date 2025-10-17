@@ -34,7 +34,7 @@ function Navbar() {
     const coins = allCoins.filter(coin => coin.name.toLowerCase().includes(val))
     setDisplayCoins(coins)
   }
-  
+
   const navigate = useNavigate();
 
   function preventSubmit(e) {
@@ -44,9 +44,16 @@ function Navbar() {
 
 
   return (
-    <div className={`flex flex-col md:flex-row justify-between items-center w-full ${themeMode ? 'bg-neutral-800' : 'bg-emerald-50'} px-4 md:px-6 py-4 gap-4 md:gap-6 shadow-lg fixed top-0 left-0 z-50`}>
+    <nav
+      className={`flex flex-row flex-wrap md:flex-row justify-around items-center w-full ${themeMode ? 'bg-neutral-800' : 'bg-emerald-50'
+        }  md:px-6 py-4  md:gap-6 shadow-lg fixed top-0 left-0 z-50 `}
+    >
+
       {/* Logo */}
-      <Link to={'/'} className="flex-shrink-0">
+      <Link
+        // onClick={}
+        to={'/'}
+        className="">
         <svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40" role="img" aria-labelledby="title" className="hover:opacity-80 transition-opacity">
           <title id="title">Crypto Tracker logo</title>
 
@@ -65,23 +72,37 @@ function Navbar() {
           <g transform="translate(6,6)" filter="url(#f1)">
             <circle cx="14" cy="14" r="14" fill="url(#g1)" />
             {/* Simplified line-chart icon */}
-            <polyline 
+            <polyline
               points="6,18 9,13 13,15 18,9 22,11"
-              fill="none" 
-              stroke="#ffffff" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
+              fill="none"
+              stroke="#ffffff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <circle cx="22" cy="11" r="1.5" fill="#ffffff" />
           </g>
-          
+
           {/* Text */}
           <text x="46" y="26" fontFamily="system-ui, -apple-system, sans-serif" fontSize="16" fontWeight="700" fill={themeMode ? '#ffffff' : '#064e3b'}>
             Crypto Tracker
           </text>
         </svg>
       </Link>
+
+      <div className='flex justify-evenly gap-5'>
+        <Link 
+        to={'/'}
+        className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
+          Home
+        </Link>
+        <Link
+        to={'/bookmark'}
+         className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
+          Bookmark
+        </Link
+        >
+      </div>
 
       <div className='flex flex-row justify-center items-center gap-3 sm:gap-4 w-full md:w-auto'>
         {/* Search Input */}
@@ -171,9 +192,9 @@ function Navbar() {
           <input
             onChange={themeHandler}
             defaultChecked={true}
-            className="peer sr-only" 
-            id="switch" 
-            type="checkbox" 
+            className="peer sr-only"
+            id="switch"
+            type="checkbox"
           />
           <span className={`absolute inset-0 rounded-full ${themeMode ? 'bg-gray-600' : 'bg-gray-300'} transition-colors`} />
           <span className={`absolute top-1 left-1 w-6 h-6 rounded-full ${themeMode ? 'bg-cyan-500' : 'bg-white'} shadow-md transition-all peer-checked:translate-x-6`}>
@@ -189,7 +210,7 @@ function Navbar() {
           </span>
         </label>
       </div>
-    </div>
+    </nav>
   )
 }
 

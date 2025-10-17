@@ -14,7 +14,7 @@ function Home() {
 
 
   return (
-    <div className="max-w-7xl mx-auto px-2 overflow-x-auto">
+    <div className="max-w-7xl mx-auto px-2 overflow-x-auto pt-0 md:pt-15 lg:pt-0">
 
       {/* Header Row */}
       <div className={`grid grid-cols-[0.5fr_minmax(0,2fr)_1fr_1fr_1.5fr] gap-2 p-2 rounded-t-2xl items-center border-b ${themeMode ? 'bg-stone-700 text-white border-neutral-700' : 'bg-lime-100 text-gray-900 border-lime-200'} text-xs sm:text-sm lg:text-base font-bold`}>

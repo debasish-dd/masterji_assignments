@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@theme {
+  --header-h: 3.5rem;
+}
+
+
+@layer base {
+  @media (min-width: 768px) {
+    :root {
+      --header-h: 4.5rem;
+    }
+  }
+}

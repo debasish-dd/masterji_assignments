@@ -6,12 +6,14 @@ import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } 
 import Home from '../components/Home.jsx'
 import Coins from '../components/Coins.jsx'
 import './index.css'
+import Bookmark from '../components/Bookmark.jsx'
 
 
 const theRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>}>
     <Route path='' element={<Home/>}/>
     <Route path='coins/:coinId' element={<Coins/>}/>
+    <Route path='bookmark' element={<Bookmark/>}/>
   </Route>
 ))
 
