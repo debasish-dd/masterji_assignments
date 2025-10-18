@@ -47,6 +47,7 @@ export default function Coins() {
 
 
     }
+    const [isBookmarkChecked, setIsBookmarkChecked] = useState(false)
 
     // for bookmark 
     function bookmarkHandler(e) {
@@ -60,11 +61,19 @@ export default function Coins() {
 
             return prev
         })
-
+        
+        
     }
-    useEffect(()=>{
-        localStorage.setItem('bookmarkedCoins' , JSON.stringify(bookmarkedCoins))
-    },[bookmarkedCoins])
+    useEffect(() => {
+  const exists = bookmarkedCoins.some(coin => coin.id === coinId)
+  if (exists !== isBookmarkChecked) {
+    setIsBookmarkChecked(exists)
+  }
+}, [bookmarkedCoins, coinId, isBookmarkChecked])
+    
+
+   
+    
 
     useEffect(() => {
         fetchCoinData()
@@ -102,12 +111,16 @@ export default function Coins() {
 
                 {/* bookmark  */}
                 <label
-                    onClick={bookmarkHandler}
                     className='flex items-center gap-2 cursor-pointer'>
                     <span className={`font-semibold ${themeMode ? 'text-gray-300' : 'text-gray-700'}`}>
                         SAVE
                     </span>
-                    <input type='checkbox' className='peer hidden' />
+                    <input
+                        onChange={bookmarkHandler}
+                        checked={isBookmarkChecked}
+                        type='checkbox'
+                        className='peer hidden'
+                    />
                     <svg
                         className={`size-7 transition-all duration-200 cursor-pointer active:scale-90 ${themeMode
                             ? 'fill-none stroke-cyan-400 peer-checked:fill-cyan-400 peer-checked:stroke-cyan-400'

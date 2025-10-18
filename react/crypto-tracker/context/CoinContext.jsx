@@ -8,7 +8,7 @@ export const CoinContextProvider = ({ children }) => {
         name: 'usd',
         symbol: '$'
     })
-    
+
     const [themeMode, setThemeMode] = useState(true)
     const [displayCoins, setDisplayCoins] = useState([])
     async function fetchAllCoin() {
@@ -35,9 +35,24 @@ export const CoinContextProvider = ({ children }) => {
     }, [currency])
 
     // for bookmark 
-    const [bookmarkedCoins, setBookmarkedCoins] = useState([])
+   const [bookmarkedCoins, setBookmarkedCoins] = useState(() => {
+  try {
+    const saved = localStorage.getItem('bookmarked')
+    if (!saved) return []
+    
+    const parsed = JSON.parse(saved)
+    return Array.isArray(parsed) ? parsed : []
+  } catch (error) {
+    console.error('Failed to load bookmarks:', error)
+    return []
+  }
+})
 
-     
+    useEffect(() => {
+  localStorage.setItem('bookmarked', JSON.stringify(bookmarkedCoins))
+}, [bookmarkedCoins])
+
+
     return (
         <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins, themeMode, setThemeMode, bookmarkedCoins, setBookmarkedCoins }}>
             {children}
