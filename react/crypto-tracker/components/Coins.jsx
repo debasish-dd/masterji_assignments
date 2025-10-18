@@ -10,7 +10,7 @@ export default function Coins() {
     const { coinId } = useParams()
     const [coinData, setCoinData] = useState('null')
     const [historicalCoinData, setHistoricalCoinData] = useState()
-    const { currency, displayCoins, themeMode } = useCoins()
+    const { currency, displayCoins, themeMode, setBookmarkedCoins, bookmarkedCoins } = useCoins()
 
     const coin = displayCoins.find(({ id }) => id === coinId);
     const coinPrice = coin ? coin.current_price : null;
@@ -48,6 +48,24 @@ export default function Coins() {
 
     }
 
+    // for bookmark 
+    function bookmarkHandler(e) {
+        const isChecked = e.target.checked;
+        setBookmarkedCoins((prev) => {
+            const isCoinExists = prev.some(coin => coin.id === coinId);
+            if (isChecked && !isCoinExists) {
+                return [...prev, coinData]
+            }
+            else if (!isChecked && isCoinExists) return prev.filter(coin => coin.id !== coinId)
+
+            return prev
+        })
+
+    }
+    useEffect(()=>{
+        localStorage.setItem('bookmarkedCoins' , JSON.stringify(bookmarkedCoins))
+    },[bookmarkedCoins])
+
     useEffect(() => {
         fetchCoinData()
         fetchHistoricalData()
@@ -82,7 +100,10 @@ export default function Coins() {
                     </div>
                 </div>
 
-                <label className='flex items-center gap-2 cursor-pointer'>
+                {/* bookmark  */}
+                <label
+                    onClick={bookmarkHandler}
+                    className='flex items-center gap-2 cursor-pointer'>
                     <span className={`font-semibold ${themeMode ? 'text-gray-300' : 'text-gray-700'}`}>
                         SAVE
                     </span>

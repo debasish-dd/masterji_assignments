@@ -10,8 +10,7 @@ function Navbar() {
 
 
   const themeHandler = e => {
-    e.target.checked ? setThemeMode(true) : setThemeMode(false)
-    console.log(themeMode);
+    setThemeMode(e.target.checked)
   }
 
   const currencySelector = e => {

@@ -34,12 +34,12 @@ export const CoinContextProvider = ({ children }) => {
         fetchAllCoin();
     }, [currency])
 
-    
-
+    // for bookmark 
+    const [bookmarkedCoins, setBookmarkedCoins] = useState([])
 
      
     return (
-        <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins, themeMode, setThemeMode }}>
+        <CoinContext.Provider value={{ allCoins, currency, setCurrency, displayCoins, setDisplayCoins, themeMode, setThemeMode, bookmarkedCoins, setBookmarkedCoins }}>
             {children}
         </CoinContext.Provider>
     )
