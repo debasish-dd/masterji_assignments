@@ -7,6 +7,7 @@ import Home from '../components/Home.jsx'
 import Coins from '../components/Coins.jsx'
 import './index.css'
 import Bookmark from '../components/Bookmark.jsx'
+import Compare from '../components/Compare.jsx'
 
 
 const theRouter = createBrowserRouter(createRoutesFromElements(
@@ -14,6 +15,7 @@ const theRouter = createBrowserRouter(createRoutesFromElements(
     <Route path='' element={<Home/>}/>
     <Route path='coins/:coinId' element={<Coins/>}/>
     <Route path='bookmark' element={<Bookmark/>}/>
+    <Route path='compare' element={<Compare/>}/>
   </Route>
 ))
 

@@ -48,6 +48,7 @@ function Navbar() {
         }  md:px-6 py-4  md:gap-6 shadow-lg fixed top-0 left-0 z-50 `}
     >
 
+      
       {/* Logo */}
       <Link
         // onClick={}
@@ -94,6 +95,11 @@ function Navbar() {
         to={'/'}
         className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
           Home
+        </Link>
+        <Link 
+        to={'/compare'}
+        className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
+          Compare
         </Link>
         <Link
         to={'/bookmark'}
