@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useCoins from '../context/CoinContext'
+import ComparisonTable from './ComparisonTable'
 
 function Compare() {
 
@@ -10,6 +11,7 @@ function Compare() {
     const [coin1, setCoin1] = useState(null)
     const [coin2, setCoin2] = useState(null)
     const [activeCoins, setActiveCoins] = useState(null)
+    const [showComparison, setShowComparison] = useState(false)
 
 
     function popUpHandler() {
@@ -37,12 +39,15 @@ function Compare() {
         }
     }
     const coinCloseHandler = (slotNumber) => {
-
+        setShowComparison(false)
         if (slotNumber === 1) {
             setCoin1(null)
         } else if (slotNumber === 2) {
             setCoin2(null)
         }
+    }
+    const compareHandler = ()=>{
+        setShowComparison(true)
     }
     useEffect(() => {
         setPopupCoins(displayCoins)
@@ -147,9 +152,12 @@ function Compare() {
 
                 </div>
             </div>)}
-            <button className={`${themeMode ? "bg-gray-600 hover:bg-gray-700" : "bg-emerald-600 hover:bg-emerald-700" } block mt-2 p-3 w-50 h-fit m-auto rounded-lg font-semibold text-white`}>
+            <button 
+            onClick={compareHandler}
+            className={`${themeMode ? "bg-gray-600 hover:bg-gray-700" : "bg-emerald-600 hover:bg-emerald-700" } block mt-2 p-3 w-50 h-fit m-auto rounded-lg font-semibold text-white`}>
                 Compare
             </button>
+            {(showComparison && (<ComparisonTable coin1={coin1} coin2={coin2} />))}
         </div>
     )
 }
@@ -167,7 +175,7 @@ function CoinSlot({ coin, handler, onRemove, slotNumber, themeMode }) {
             </svg>
         </button>)
     } else return (
-        <div className="relative w-full sm:max-w-[285px] mx-auto">
+        <div className="relative w-full sm:max-w-[285px] ">
             <button
                 onClick={() => onRemove(slotNumber)}
                 className="absolute bg-red-500 hover:bg-red-700 text-white rounded-full w-6 h-6 flex items-center justify-center transition-colors duration-200 -top-2 -right-1 cursor-pointer"
