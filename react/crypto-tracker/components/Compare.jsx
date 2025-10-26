@@ -162,6 +162,7 @@ function Compare() {
     )
 }
 
+
 function CoinSlot({ coin, handler, onRemove, slotNumber, themeMode }) {
     if (!coin) {
         return (<button

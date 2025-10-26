@@ -5,9 +5,9 @@ import { Link, useNavigate, Outlet } from 'react-router-dom'
 
 function Navbar() {
   const { setCurrency, setDisplayCoins, allCoins, themeMode, setThemeMode } = useCoins()
-  const [searchTerm, setSearchTerm] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+  const [open, setOpen] = useState(false)
 
+  const linkClasses = `px-3 py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`;
 
   const themeHandler = e => {
     setThemeMode(e.target.checked)
@@ -48,7 +48,7 @@ function Navbar() {
         }  md:px-6 py-4  md:gap-6 shadow-lg fixed top-0 left-0 z-50 `}
     >
 
-      
+
       {/* Logo */}
       <Link
         // onClick={}
@@ -90,24 +90,28 @@ function Navbar() {
         </svg>
       </Link>
 
-      <div className='flex justify-evenly gap-5'>
-        <Link 
-        to={'/'}
-        className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
-          Home
-        </Link>
-        <Link 
-        to={'/compare'}
-        className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
-          Compare
-        </Link>
-        <Link
-        to={'/bookmark'}
-         className={`${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} px-3 sm:px-3 py-2 sm:py-2 rounded-lg font-medium transition hover:opacity-90 text-sm sm:text-base cursor-pointer`}>
-          Bookmark
-        </Link
-        >
+      <div className=' justify-evenly gap-5 hidden sm:flex'>
+        <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Home</Link>
+        <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Compare</Link>
+        <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Bookmark</Link>
       </div>
+
+      <button
+        onClick={() => { setOpen((prev) => !prev) }}
+        className="w-9 h-10 flex flex-col justify-center items-center gap-1 cursor-pointer sm:hidden"
+      >
+        <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? 'rotate-45 translate-y-[6px]' : ''}`} />
+        <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? 'opacity-0' : ''}`} />
+        <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? '-rotate-45 -translate-y-[6px]' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="absolute top-full left-0 w-full flex flex-col items-center bg-white dark:bg-gray-800 sm:hidden py-2 gap-2 shadow-lg z-50">
+          <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Home</Link>
+          <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Compare</Link>
+          <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Bookmark</Link>
+        </div>
+      )}
 
       <div className='flex flex-row justify-center items-center gap-3 sm:gap-4 w-full md:w-auto'>
         {/* Search Input */}
