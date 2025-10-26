@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useCoins from '../context/CoinContext'
-import { Link, useNavigate, Outlet } from 'react-router-dom'
+import { Link, useNavigate, NavLink } from 'react-router-dom'
 
 
 function Navbar() {
@@ -41,6 +41,14 @@ function Navbar() {
     navigate('/')
   }
 
+  const getNavLinkClasses = (isActive) => {
+    const base = `${linkClasses} w-25 text-center`;
+
+    if (isActive) {
+      return `${base} ${themeMode ? 'bg-gray-700' : 'bg-emerald-300'}`;
+    }
+    return `${base} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`;
+  };
 
   return (
     <nav
@@ -90,10 +98,16 @@ function Navbar() {
         </svg>
       </Link>
 
-      <div className=' justify-evenly gap-5 hidden md:flex'>
-        <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Home</Link>
-        <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Compare</Link>
-        <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Bookmark</Link>
+      <div className='justify-evenly gap-5 hidden md:flex'>
+        <NavLink to="/" className={({ isActive }) => getNavLinkClasses(isActive)}>
+          Home
+        </NavLink>
+        <NavLink to="/compare" className={({ isActive }) => getNavLinkClasses(isActive)}>
+          Compare
+        </NavLink>
+        <NavLink to="/bookmark" className={({ isActive }) => getNavLinkClasses(isActive)}>
+          Bookmark
+        </NavLink>
       </div>
 
       <button
@@ -105,11 +119,18 @@ function Navbar() {
         <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? '-rotate-45 -translate-y-[6px]' : ''}`} />
       </button>
 
+
       {open && (
-        <div className={`absolute top-full left-0 w-full flex flex-col items-center ${themeMode? 'dark:bg-gray-800' : 'bg-lime-50'} md:hidden py-2 gap-2 shadow-lg z-50`}>
-          <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Home</Link>
-          <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Compare</Link>
-          <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Bookmark</Link>
+        <div className={`absolute top-full left-0 w-full flex flex-col items-center ${themeMode ? 'bg-gray-800' : 'bg-lime-50'} md:hidden py-2 gap-2 shadow-lg z-50`}>
+          <NavLink to="/" className={({ isActive }) => getNavLinkClasses(isActive)} onClick={() => setOpen(false)}>
+            Home
+          </NavLink>
+          <NavLink to="/compare" className={({ isActive }) => getNavLinkClasses(isActive)} onClick={() => setOpen(false)}>
+            Compare
+          </NavLink>
+          <NavLink to="/bookmark" className={({ isActive }) => getNavLinkClasses(isActive)} onClick={() => setOpen(false)}>
+            Bookmark
+          </NavLink>
         </div>
       )}
 
