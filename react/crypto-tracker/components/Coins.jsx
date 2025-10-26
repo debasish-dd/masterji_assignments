@@ -8,45 +8,48 @@ import LineChartComponent from './LineChartComponent'
 export default function Coins() {
 
     const { coinId } = useParams()
-    const [coinData, setCoinData] = useState('null')
+    const [coinData, setCoinData] = useState(null)
     const [historicalCoinData, setHistoricalCoinData] = useState()
+    const [isLoading, setIsLoading] = useState(true)
     const { currency, displayCoins, themeMode, setBookmarkedCoins, bookmarkedCoins } = useCoins()
 
     const coin = displayCoins.find(({ id }) => id === coinId);
     const coinPrice = coin ? coin.current_price : null;
 
-    async function fetchCoinData() {
+  async function fetchCoinData() {
         try {
-            const res = await fetch(`/api/coins/${coinId}`, {
+            const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`, {
                 headers: {
                     accept: "application/json",
-                    'x-cg-api-key': import.meta.env.VITE_CRYPTO_KEY,
                 },
             });
 
-
+            if (!res.ok) throw new Error('Failed to fetch coin data');
+            
             const data = await res.json()
             setCoinData(data)
         } catch (err) {
             console.error(err)
+        } finally {
+            setIsLoading(false)
         }
     }
 
-
     async function fetchHistoricalData() {
-        const options = {
-            method: 'GET',
-            headers: { accept: 'application/json', 'x-cg-demo-api-key': import.meta.env.VITE_CRYPTO_KEY }
-        };
-
-
-        fetch(`/api/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=7`)
-            .then(res => res.json())
-            .then(res => setHistoricalCoinData(res))
-            .catch(err => console.error(err));
-
-
+        try {
+            const res = await fetch(
+                `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=7`
+            );
+            
+            if (!res.ok) throw new Error('Failed to fetch historical data');
+            
+            const data = await res.json();
+            setHistoricalCoinData(data);
+        } catch (err) {
+            console.error(err);
+        }
     }
+
     const [isBookmarkChecked, setIsBookmarkChecked] = useState(false)
 
     // for bookmark 
@@ -71,16 +74,20 @@ export default function Coins() {
   }
 }, [bookmarkedCoins, coinId, isBookmarkChecked])
     
-
-   
-    
-
     useEffect(() => {
         fetchCoinData()
         fetchHistoricalData()
 
 
     }, [coinId, currency])
+
+    if (isLoading || !coinData) {
+        return (
+            <div className={`min-h-screen flex items-center justify-center ${themeMode ? 'bg-gray-800 text-white' : 'bg-gray-50 text-stone-900'}`}>
+                <p className="text-2xl">Loading...</p>
+            </div>
+        )
+    }
 
     return (
         <div className={`min-h-screen pt-4 sm:pt-0 ${themeMode ? 'bg-gray-800 text-white' : 'bg-gray-50 text-stone-900'} pb-8 transition-colors duration-300`}>
