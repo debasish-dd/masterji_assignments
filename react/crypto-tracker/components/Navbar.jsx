@@ -90,7 +90,7 @@ function Navbar() {
         </svg>
       </Link>
 
-      <div className=' justify-evenly gap-5 hidden sm:flex'>
+      <div className=' justify-evenly gap-5 hidden md:flex'>
         <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Home</Link>
         <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Compare</Link>
         <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`}>Bookmark</Link>
@@ -98,7 +98,7 @@ function Navbar() {
 
       <button
         onClick={() => { setOpen((prev) => !prev) }}
-        className="w-9 h-10 flex flex-col justify-center items-center gap-1 cursor-pointer sm:hidden"
+        className="w-9 h-10 flex flex-col justify-center items-center gap-1 cursor-pointer md:hidden"
       >
         <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? 'rotate-45 translate-y-[6px]' : ''}`} />
         <span className={`block w-6 h-[2px] rounded-sm transition-all duration-300 ${themeMode ? 'bg-white' : 'bg-black'} ${open ? 'opacity-0' : ''}`} />
@@ -106,10 +106,10 @@ function Navbar() {
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 w-full flex flex-col items-center bg-white dark:bg-gray-800 sm:hidden py-2 gap-2 shadow-lg z-50">
-          <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Home</Link>
-          <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Compare</Link>
-          <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'}`} onClick={() => setOpen(false)}>Bookmark</Link>
+        <div className={`absolute top-full left-0 w-full flex flex-col items-center ${themeMode? 'dark:bg-gray-800' : 'bg-lime-50'} md:hidden py-2 gap-2 shadow-lg z-50`}>
+          <Link to="/" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Home</Link>
+          <Link to="/compare" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Compare</Link>
+          <Link to="/bookmark" className={`${linkClasses} ${themeMode ? 'bg-gray-600 hover:bg-gray-700' : 'bg-emerald-100 hover:bg-emerald-200'} w-25 text-center`} onClick={() => setOpen(false)}>Bookmark</Link>
         </div>
       )}
 
@@ -117,7 +117,7 @@ function Navbar() {
         {/* Search Input */}
         <form
           onSubmit={preventSubmit}
-          className='flex-1 max-w-md md:max-w-sm'
+          className='flex-1 max-w-md md:max-w-sm mx-2'
         >
           <div className='relative'>
             <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
