@@ -1,10 +1,16 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDropzone } from 'react-dropzone'
 import { ToastContainer, toast , Bounce } from 'react-toastify';
-
+import {PDFLoader} from "@langchain/community/document_loaders/fs/pdf"
 
 export default function FileUpload() {
+
+    const pdfHandler = async (pdf) => {
+        console.log("inside pdf handler-" , pdf);
+        // const loader 
+        
+    }
 
     const onDrop = useCallback(acceptedFiles => {
         // Do something with the files
@@ -20,7 +26,9 @@ export default function FileUpload() {
                 theme: "dark",
                 transition: Bounce,
             });
-            console.log('files-->', acceptedFiles);
+            console.log('files-->', ...acceptedFiles);
+           
+            pdfHandler(...acceptedFiles)
         }
 
     }, [])
@@ -62,6 +70,7 @@ export default function FileUpload() {
         }
 
     }, [])
+
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
         onDropRejected,
@@ -72,6 +81,8 @@ export default function FileUpload() {
         }
 
     })
+    
+
     return (
         <div className={`rounded-lg border-dashed border-2 h-45 m-5 flex justify-center items-center ${isDragActive ? "border-solid border-orange-500 bg-orange-300/30" : "hover:border-solid hover:border-orange-500"} `} {...getRootProps()}>
             <ToastContainer
@@ -96,6 +107,7 @@ export default function FileUpload() {
                         <button className="mt-2 p-2 bg-orange-500 text-white rounded">Browse Files</button>
                     </div>
             }
+          
         </div>
     )
 
