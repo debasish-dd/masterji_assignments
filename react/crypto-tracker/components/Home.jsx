@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import useCoins from '../context/CoinContext'
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +28,7 @@ function Home() {
       {displayCoins.slice(startIndex, (startIndex + itemsPerPage)).map((item, index) => (
         <Link
           to={`/coins/${item.id}`}
-          key={index}
+          key={item.id}
           className={`grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] gap-3 items-center border-b text-sm sm:text-base p-3 sm:px-4 ${themeMode ? 'bg-gray-700 border-neutral-950 text-white hover:bg-gray-600' : 'bg-white border-lime-200 text-black hover:bg-lime-50'} transition-colors min-w-0`}
         >
           {/* Rank */}
