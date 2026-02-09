@@ -145,11 +145,11 @@ function ComparisonTable({ coin1, coin2 }) {
                     <tr className={`border-b ${themeMode ? 'border-gray-600' : 'border-emerald-300'}`}>
                         <td className="py-3">Market Cap Change (24h)</td>
                         <td className="text-center py-3">
-                            <span className={`${firstCoin.market_cap_change_percentage_24h>0? 'text-green-800': 'text-red-800'} font-semibold`}>{firstCoin.market_cap_change_percentage_24h?.toFixed(2)}% </span>
+                            <span className={`${firstCoin?.market_cap_change_percentage_24h > 0 ? 'text-green-800' : 'text-red-800'} font-semibold`}>{firstCoin?.market_cap_change_percentage_24h?.toFixed(2)}% </span>
                            
                         </td>
                         <td className="text-center py-3">
-                           <span className={`${secondCoin?.market_cap_change_percentage_24h>0? 'text-green-800': 'text-red-800'} font-semibold`}>{secondCoin?.market_cap_change_percentage_24h?.toFixed(2)}% </span>
+                           <span className={`${secondCoin?.market_cap_change_percentage_24h > 0 ? 'text-green-800' : 'text-red-800'} font-semibold`}>{secondCoin?.market_cap_change_percentage_24h?.toFixed(2)}% </span>
                         </td>
                     </tr>
 
