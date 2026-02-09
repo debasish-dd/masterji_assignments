@@ -44,17 +44,17 @@ function Home() {
 
           {/* Price */}
           <p className="whitespace-nowrap text-right">
-            {currency.symbol}{item.current_price.toLocaleString()}
+            {currency.symbol}{item?.current_price?.toLocaleString()}
           </p>
 
           {/* 24H Change */}
           <p className={`whitespace-nowrap text-right font-semibold ${item.price_change_percentage_24h >= 0 ? 'text-lime-500' : 'text-orange-500'}`}>
-            {item.price_change_percentage_24h.toFixed(2)}%
+            {item?.price_change_percentage_24h?.toFixed(2)}%
           </p>
 
           {/* Market Cap */}
           <p className="whitespace-nowrap text-right min-w-0 truncate shrink-0">
-            {currency.symbol}{item.market_cap.toLocaleString()}
+            {currency.symbol}{item?.market_cap?.toLocaleString()}
           </p>
         </Link>
       ))}
