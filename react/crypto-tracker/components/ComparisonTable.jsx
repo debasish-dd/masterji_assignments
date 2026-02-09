@@ -94,7 +94,7 @@ function ComparisonTable({ coin1, coin2 }) {
                             
                         </td>
                         <td className="text-center py-3">
-                            <span className={`${secondCoin?.price_change_percentage_24h>0? 'text-green-800': 'text-red-800'} font-semibold`}>{firstCoin.price_change_percentage_24h?.toFixed(2)}% </span>
+                            <span className={`${secondCoin?.price_change_percentage_24h>0? 'text-green-800': 'text-red-800'} font-semibold`}>{secondCoin.price_change_percentage_24h?.toFixed(2)}% </span>
                         </td>
                     </tr>
 
